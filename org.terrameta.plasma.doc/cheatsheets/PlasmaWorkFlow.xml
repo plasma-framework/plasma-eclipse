@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<compositeCheatsheet name="Plasma WorkFlow DashBoard">
+   <taskGroup kind="choice" name="Plasma WorkFlow" skip="false">
+      <intro>
+         The goal of this workflow is to facilitate common use cases using the <b>Plasma Perspective</b>
+      </intro>
+      <onCompletion>
+         <b>Having reached the end dof the workflow means that at least one solution is now present either on your local disk (in this case we hope you will publish it on the website) or published on thte website and then the French Robotic community thank you for your effort</b>
+      </onCompletion>
+      <task kind="cheatsheet" name="Open Perspective" skip="false">
+         <intro>
+            <b>Open the Plasma Perspective</b>
+         </intro>
+         <onCompletion>
+            &lt;b/&gt;
+         </onCompletion>
+         <param name="path" value="OpenPerspective.xml">
+         </param>
+      </task>
+      <taskGroup kind="sequence" name="Project Creation From Existing Sources" skip="false">
+         <onCompletion>
+            <b>Finishing this phase, there is an existing and published Model of the problem, it is time to decide on which platform to deploy it and proceed to the new step.</b>
+         </onCompletion>
+         <task kind="cheatsheet" name="Select Source Provider" skip="false">
+            <intro>
+               <b>Introduction</b>
+            </intro>
+            <onCompletion>
+               <b>Conclusion</b>
+            </onCompletion>
+            <param name="path" value="SelectSourceProvider.xml">
+            </param>
+         </task>
+      </taskGroup>
+      <taskGroup kind="sequence" name="Creating a New Project" skip="false">
+         <intro>
+            <b>Introduction</b>
+         </intro>
+         <onCompletion>
+            <b>Conclusion</b>
+         </onCompletion>
+         <task kind="cheatsheet" name="Task" skip="false">
+            <intro>
+               <b>Introduction</b>
+            </intro>
+            <onCompletion>
+               <b>Conclusion</b>
+            </onCompletion>
+         </task>
+      </taskGroup>
+   </taskGroup>
+</compositeCheatsheet>

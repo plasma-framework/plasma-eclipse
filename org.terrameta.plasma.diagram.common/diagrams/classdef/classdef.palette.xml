@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<paletteDefinition>
+	<content>
+		<drawer
+			iconpath="platform:/plugin/org.eclipse.gmf.runtime.diagram.ui/icons/group.gif"
+			id="org.terrameta.plasma.diagram.diagram.classdefdef.UML_ClassDef__Nodes" name="Nodes">
+			
+			<aspectTool description="Create a new Package" id="classdef.tool.package"
+				name="Package" refToolId="clazz.tool.package">
+			</aspectTool>			
+			<aspectTool description="Create a new Class" id="classdef.tool.class"
+				name="Class" refToolId="clazz.tool.class">
+			</aspectTool>			
+			<aspectTool description="Create a new Property" id="classdef.tool.property"
+				name="Property" refToolId="clazz.tool.property">
+			</aspectTool>
+			
+			<aspectTool description="Create a new Enumeration" id="classdef.tool.enumeration"
+				name="Enumeration" refToolId="clazz.tool.enumeration">
+			</aspectTool>
+			<aspectTool description="Create a new EnumerationLiteral" id="datatypedef.tool.enumerationliteral"
+				name="EnumerationLiteral" refToolId="clazz.tool.enumerationliteral">
+			</aspectTool>			
+			<aspectTool description="Create a new Comment" id="classdef.tool.comment"
+				name="Comment" refToolId="clazz.tool.comment">
+			</aspectTool>
+		</drawer>
+		
+		<drawer
+			iconpath="platform:/plugin/org.eclipse.gmf.runtime.diagram.ui/icons/group.gif"
+			id="org.terrameta.plasma.diagram.diagram.classdef.UML_ClassDef__Edges" name="Edges">			
+			<aspectTool description="Create a new Generalization" id="classdef.tool.generalization"
+				name="Generalization" refToolId="clazz.tool.generalization">
+			</aspectTool>
+			<aspectTool description="Create a new Association" id="classdef.tool.association"
+				name="Association" refToolId="clazz.tool.association">
+			</aspectTool>			
+			<aspectTool description="Create a new ElementImport" id="classdef.tool.elementimport"
+				name="ElementImport" refToolId="clazz.tool.elementimport">
+			</aspectTool>
+		</drawer>
+	</content>
+</paletteDefinition>

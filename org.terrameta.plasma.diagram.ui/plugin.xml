@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+         
+      <category
+          name="Plasma"
+          id="org.terrameta.plasma.wizards.category"
+          icon="platform:/plugin/org.terrameta.plasma.perspective/icons/workingsets_obj.png">
+      </category>
+             
+      <wizard
+            canFinishEarly="false"
+            category="org.terrameta.plasma.wizards.category"
+            class="org.terrameta.plasma.diagram.ui.NewPlasmaModelWizard"
+            finalPerspective="org.eclipse.papyrus.infra.core.perspective"
+            icon="platform:/plugin/org.terrameta.plasma.perspective/icons/workingsets_obj.png"
+            id="org.terrameta.plasma.wizards.createplasmamodel"
+            name="Plasma Model">
+         <selection
+               class="org.eclipse.core.resources.IResource">
+         </selection>
+      </wizard>
+      <wizard
+            canFinishEarly="false"
+            category="org.terrameta.plasma.wizards.category.createplasmamodel"
+            class="org.terrameta.plasma.diagram.ui.NewPlasmaModelWizard"
+            finalPerspective="org.eclipse.papyrus.infra.core.perspective"
+            icon="platform:/plugin/org.terrameta.plasma.perspective/icons/workingsets_obj.png"
+            id="org.terrameta.plasma.wizards.createplasmamodel.root"
+            name="Plasma Model">
+         <selection
+               class="org.eclipse.core.resources.IResource">
+         </selection>
+      </wizard>
+       
+      <wizard
+            category="org.terrameta.plasma.wizards.category"
+            class="org.terrameta.plasma.diagram.ui.NewPlasmaProjectWizard"
+            finalPerspective="org.eclipse.papyrus.infra.core.perspective"
+            icon="platform:/plugin/org.terrameta.plasma.perspective/icons/workingsets_obj.png"
+            id="org.terrameta.plasma.wizards.createplasmaproject"
+            name="Plasma Project"
+            project="true">
+         <description>
+            New Plasma project
+         </description>
+      </wizard>
+       
+      <wizard
+            category="org.terrameta.plasma.wizards.category"
+            class="org.terrameta.plasma.diagram.ui.NewPlasmaModelReverseWizard"
+            finalPerspective="org.eclipse.papyrus.infra.core.perspective"
+            icon="platform:/plugin/org.terrameta.plasma.perspective/icons/workingsets_obj.png"
+            id="org.terrameta.plasma.wizards.createmodelreverse"
+            name="Plasma Project (from external source)"
+            project="true">
+         <description>
+            New Plasma Project (reverse engineered) from external source
+         </description>
+      </wizard>
+      
+      <wizard
+         category="org.terrameta.plasma.wizards.category"
+         class="org.terrameta.plasma.diagram.ui.InitPlasmaModelWizard"
+         finalPerspective="org.eclipse.papyrus.infra.core.perspective"
+         icon="platform:/plugin/org.terrameta.plasma.perspective/icons/workingsets_obj.png"
+         id="org.eclipse.papyrus.uml.diagram.wizards.createmodel"
+         name="Plasma Diagram">
+         <description>
+            New Plasma diagram from existing UML model
+         </description>
+     </wizard>
+   </extension>
+
+</plugin>

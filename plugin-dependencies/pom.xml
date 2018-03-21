@@ -1,0 +1,198 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+ 	<groupId>plasma-eclipse</groupId>
+	<artifactId>plugin-dependencies</artifactId>
+	<packaging>jar</packaging>
+	<version>0.5.0</version>
+	<name>Plasma Eclipse Plugin Dependencies</name>
+    <description>
+    A Maven project to collect all dependent libs into a single jar that Eclipse plugin environment can handle.
+    Notes: so add all the jar dependencies into the root lib of the deps plugin. To refresh the deps plugin jars. Go to the 
+    Runtime tab of the plugin editor and remove all existing, then add all. Remove all exported packages, then all all packages again. 
+    The OSGI manifest and build.properties should be updated. Note: obviously don't check in the libs added to project root dir!
+    </description>
+    <dependencies>
+	    <dependency>
+	      <groupId>org.terrameta</groupId>
+	      <artifactId>plasma-core</artifactId>
+	      <version>2.0.3</version>
+	      <exclusions>
+	      	<exclusion>
+	      		<artifactId>jaxb-api</artifactId>
+	      		<groupId>javax.xml.bind</groupId>
+	      	</exclusion>
+	      	<exclusion>
+	      		<artifactId>jaxb-xjc</artifactId>
+	      		<groupId>com.sun.xml.bind</groupId>
+	      	</exclusion>
+	      	<exclusion>
+	      		<artifactId>jaxb-impl</artifactId>
+	      		<groupId>com.sun.xml.bind</groupId>
+	      	</exclusion>
+	      	<exclusion>
+	      		<artifactId>xerces</artifactId>
+	      		<groupId>xerces</groupId>
+	      	</exclusion>
+	      	<exclusion>
+	      		<artifactId>xml-apis</artifactId>
+	      		<groupId>xml-apis</groupId>
+	      	</exclusion>
+	      	<exclusion>
+	      		<artifactId>xercesImpl</artifactId>
+	      		<groupId>xerces</groupId>
+	      	</exclusion>
+	      	<exclusion>
+	      		<artifactId>xmlParserAPIs</artifactId>
+	      		<groupId>xerces</groupId>
+	      	</exclusion>
+	      	<exclusion>
+	      		<artifactId>junit</artifactId>
+	      		<groupId>junit</groupId>
+	      	</exclusion>
+	      	<exclusion>
+	      		<artifactId>log4j</artifactId>
+	      		<groupId>log4j</groupId>
+	      	</exclusion>
+	      	<exclusion>
+	      		<artifactId>jdom</artifactId>
+	      		<groupId>jdom</groupId>
+	      	</exclusion>
+	      </exclusions>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.terrameta</groupId>
+	      <artifactId>plasma-provisioning</artifactId>
+	      <version>2.0.3</version>
+	    </dependency>
+	    <dependency>                                 
+            <groupId>commons-dbcp</groupId>          
+            <artifactId>commons-dbcp</artifactId>    
+            <version>1.4</version>                   
+        </dependency>                                
+        <dependency>
+            <groupId>com.jolbox</groupId>
+            <artifactId>bonecp</artifactId>
+            <version>0.8.0.RELEASE</version>
+        </dependency>
+          
+        <dependency>
+          <groupId>org.cloudgraph</groupId>
+          <artifactId>cloudgraph-rdb</artifactId>
+          <version>1.1.0</version>
+          <exclusions>
+          	<exclusion>
+          		<artifactId>cloudgraph-mapreduce</artifactId>
+          		<groupId>org.cloudgraph</groupId>
+          	</exclusion>
+          </exclusions>
+        </dependency>
+	     
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.0.3.0</version>
+		</dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.23</version>
+        </dependency>
+	    
+        
+		<dependency>
+		  <groupId>org.slf4j</groupId>
+		  <artifactId>slf4j-api</artifactId>
+		  <version>1.7.5</version>
+		</dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>jcl-over-slf4j</artifactId>
+          <version>1.7.5</version>
+        </dependency>
+	    <dependency>
+	      <groupId>ch.qos.logback</groupId>
+	      <artifactId>logback-core</artifactId>
+	      <version>1.0.7</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>ch.qos.logback</groupId>
+	      <artifactId>logback-classic</artifactId>
+	      <version>1.0.7</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>ch.qos.logback</groupId>
+	      <artifactId>logback-access</artifactId>
+	      <version>1.0.7</version>
+	    </dependency>	 
+	          
+    </dependencies>
+	<build>
+	<finalName>plasma-plugin-dependencies</finalName>
+	<plugins>
+    
+    <!-- creates an uber jar with all deps --> 
+    <!-- use: mvn clean package assembly:single --> 
+    <!-- 
+    <plugin>
+    <artifactId>maven-assembly-plugin</artifactId>
+      <configuration>
+        <archive>
+          <manifest>
+            <mainClass>com.javavids.main.Main</mainClass>
+          </manifest>
+        </archive>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+      </configuration>
+    </plugin>
+    -->
+	
+	<!-- creates a standalone zip with deps -->  
+	
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-jar-plugin</artifactId>
+		<version>2.3</version>
+		<configuration>
+		          <archive>
+		            <manifest>
+		              <addClasspath>true</addClasspath>
+		              <mainClass>org.terrameta.plasma.eclipse.PluginBridge</mainClass>
+		            </manifest>
+		          </archive>
+		</configuration>
+	</plugin>	 
+    <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>2.4</version>
+          <executions>
+              <execution>
+                  <id>assemble-zip</id>
+                  <phase>package</phase>
+                  <goals>
+                      <goal>single</goal>
+                  </goals>
+              </execution>
+          </executions>
+          <configuration>
+              <descriptors>
+                  <descriptor>maven-assembly-dist.xml</descriptor>
+              </descriptors>
+          </configuration>
+	</plugin>
+	  
+	<plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<version>2.3.2</version>
+		<configuration>
+			<source>1.6</source>
+			<target>1.6</target>
+			<encoding>UTF-8</encoding>
+		</configuration>
+	</plugin>
+        </plugins>
+	</build>
+</project>

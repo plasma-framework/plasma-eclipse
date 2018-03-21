@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Select Provider">
+   <intro>
+   <description>
+      During this step the user finds available data providers
+   </description>
+   </intro>
+   <item
+         title="Configure compilation">
+      <description>
+         Edit makefiles, etc.
+      </description>
+   </item>
+      
+   <item
+         title="Launch compilation">
+      <description>
+         <b>Body</b>
+      </description>
+   </item>
+   <item
+         title="No compilation ">
+      <description>
+         There are interpreted platforms that do not ask for specific transformation of the code generated during the previous phase. If it is the case the user activates this case and proceed to the following phase.
+      </description>
+   </item>
+</cheatsheet>

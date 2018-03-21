@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.2
+Created-By: 1.6.0_21-b06 (Sun Microsystems Inc.)
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime
+Bundle-Vendor: %Bundle-Vendor
+Bundle-ActivationPolicy: lazy
+Bundle-Version: 1.0.0.v201406250859
+Bundle-Name: %Bundle-Name
+Bundle-Localization: plugin
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.terrameta.plasma.doc.Activator
+Bundle-SymbolicName: org.terrameta.plasma.doc;singleton:=true
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+

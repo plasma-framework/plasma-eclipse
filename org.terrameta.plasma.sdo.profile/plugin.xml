@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            name="Sample Page"
+            nameFilter="*.*"
+            class="org.terrameta.plasma.sdo.profile.properties.SamplePropertyPage"
+            id="org.terrameta.plasma.sdo.profile.properties.samplePropertyPage">
+         <enabledWhen>
+            <instanceof
+                  value="org.eclipse.core.resources.IFile">
+            </instanceof>
+         </enabledWhen>
+      </page>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.uri_mapping">
+     <mapping target="platform:/plugin/org.terrameta.plasma.sdo.profile/model/" source="pathmap://PLASMA_PROFILES/"/>
+   </extension>
+
+   <extension point="org.eclipse.papyrus.uml.extensionpoints.UMLProfile">
+     <profile provider="TerraMeta Software Inc." path="pathmap://PLASMA_PROFILES/PlasmaSDO.profile_v1_3.uml" name="Plasma Profile 1.3" iconpath="icons/plasma.png" description="Eclipse Papyrus UML Profile for PlasmaSDO (Service Data Objects) 2.1"> </profile>
+   </extension>
+  
+   <extension point="org.eclipse.emf.ecore.uri_mapping">
+     <mapping target="platform:/plugin/org.terrameta.plasma.sdo.profile/libraries/" source="pathmap://PLASMA_LIBRARIES/"/>
+   </extension>
+  
+   <extension point="org.eclipse.papyrus.uml.extensionpoints.UMLLibrary">
+     <library provider="TerraMeta Software Inc." path="pathmap://PLASMA_LIBRARIES/PlasmaSDODataTypes_v1_3.uml" name="Plasma DataTypes" iconpath="icons/plasma.png" description="Eclipse Papyrus UML Profile Datatypes for PlasmaSDO (Service Data Objects) 2.1"> </library>
+   </extension>
+
+</plugin>

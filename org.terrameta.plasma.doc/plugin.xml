@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <category
+            id="org.terrameta.plasma.doc.category"
+            name="Plasma.cheatsheets">
+      </category>
+      <cheatsheet
+            category="org.terrameta.plasma.doc.category"
+            composite="true"
+            contentFile="$nl$/cheatsheets/PlasmaWorkFlow.xml"
+            id="org.terrameta.plasma.doc.cheatsheet1051923325"
+            name="Plasma DashBoard">
+         <description>
+            Plasma Work Flow
+         </description>
+      </cheatsheet>
+   </extension>
+     <!--extension
+         point="org.eclipse.help.toc">
+      <toc
+            file="help/toc.xml"
+            primary="true">
+      </toc>
+           
+   </extension-->
+
+</plugin>

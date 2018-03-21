@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+    
+   <extension
+         point="org.eclipse.papyrus.infra.core.papyrusDiagram">
+      <diagramCategory
+            class="org.terrameta.plasma.diagram.common.commands.CreatePlasmaModelCommand"
+            description="UML Diagram (annotated with PlasmaSDO profile)"
+            icon="platform:/plugin/org.terrameta.plasma.perspective/icons/workingsets_obj.png"
+            id="Plasma"
+            label="Plasma">
+      </diagramCategory>
+      <editorDiagram
+            actionBarContributorId="org.eclipse.papyrus.uml.diagram.common.part.UMLDiagramActionBarContributor"
+            factoryClass="org.terrameta.plasma.diagram.common.factory.PlasmaDefaultClassDiagramFactory"
+            icon="platform:/plugin/org.terrameta.plasma.perspective/icons/workingsets_obj.png">
+      </editorDiagram>
+   </extension>
+    
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.terrameta.plasma.diagram.common.IsPapyrusActiveWithPlasmaModel">
+         <and>
+            <with
+                  variable="activeEditorId">
+               <equals
+                     value="org.eclipse.papyrus.infra.core.papyrusEditor">
+               </equals>
+            </with>
+            <with
+                  variable="selection">
+               <test
+                     forcePluginActivation="true"
+                     property="org.eclipse.papyrus.PlasmaSelectionTester.isPlasmaModel"
+                     value="true">
+               </test>
+            </with>
+         </and>
+      </definition>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.terrameta.plasma.diagram.common.utils.PlasmaSelectionTester"
+            id="org.eclipse.papyrus.PlasmaSelectionTester"
+            namespace="org.eclipse.papyrus.PlasmaSelectionTester"
+            properties="isPlasmaModel"
+            type="org.eclipse.jface.viewers.ISelection">
+      </propertyTester>
+   </extension>
+   
+   <extension id="papyrus.Plasma.menuspapyrus.generate" 
+      name="Generate Menu Extension" point="org.eclipse.ui.menus">
+      <menuContribution allPopups="false" 
+         locationURI="popup:org.eclipse.papyrus.views.modelexplorer.modelexplorer.popup?after=org.eclipse.papyrus.views.modelexplorer.popupmenu.createchild">
+         <menu
+               icon="icons/plasma_perspective6.png"
+               id="org.eclipse.papyrus.Plasma.modelexplorer.popupmenu.generate"
+               label="Generate"
+               mnemonic="&amp;G"
+               tooltip="Generate from model to various artifacts">
+            <visibleWhen
+                  checkEnabled="false">
+                  <reference
+                     definitionId="org.terrameta.plasma.diagram.common.IsPapyrusActiveWithPlasmaModel">
+               </reference>
+            </visibleWhen>
+            <command
+                  commandId="org.terrameta.plasma.generate.sdo"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.terrameta.plasma.generate.dsl"
+                  style="push">
+            </command>
+         </menu>     
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=additions">
+         <menu
+               icon="icons/plasma_perspective6.png"
+               id="org.terrameta.plasma.diagram.migrate"
+               label="Plasma">
+               <visibleWhen
+                  checkEnabled="false">
+                  <reference
+                     definitionId="org.terrameta.plasma.diagram.common.IsPapyrusActiveWithPlasmaModel">
+               </reference>
+            </visibleWhen>
+            <command
+                  commandId="org.terrameta.plasma.diagram.migrate"
+                  style="push">
+                  <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="selection">
+                     <iterate
+                           ifEmpty="false"
+                           operator="and">
+                        <adapt
+                              type="org.eclipse.core.resources.IFile">
+                           <or>
+                              <test
+                                    property="org.eclipse.core.resources.extension"
+                                    value="di">
+                              </test>
+                              <test
+                                    property="org.eclipse.core.resources.extension"
+                                    value="uml">
+                              </test>
+                              <test
+                                    property="org.eclipse.core.resources.extension"
+                                    value="notation">
+                              </test>
+                           </or>
+                        </adapt>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+         </menu>
+      </menuContribution>
+ </extension>    
+ <extension
+         point="org.eclipse.ui.commands">
+      <category
+            description="this a category of Plasma commands"
+            id="org.eclipse.papyrus.Plasma.generation.category"
+            name="Plasma Generation Category">
+      </category>
+      <command
+            defaultHandler="org.terrameta.plasma.diagram.common.migration.MigrateDiagramsHandler"
+            id="org.terrameta.plasma.diagram.migrate"
+            name="Migrate Plasma diagrams from 0.5 to 1.0 version">
+      </command>
+      <command
+            defaultHandler="org.terrameta.plasma.diagram.common.migration.TestHandler"
+            id="org.terrameta.plasma.generate.sdo"
+            name="Generate Plasma SDO Java Classes">
+      </command>
+      <command
+            defaultHandler="org.terrameta.plasma.diagram.common.migration.TestHandler"
+            id="org.terrameta.plasma.generate.dsl"
+            name="Generate Plasma Query DSL Java Classes">
+      </command>
+ </extension>
+ <extension
+       point="org.eclipse.papyrus.uml.properties.languageEditor">
+    <editor
+          editor="org.eclipse.papyrus.uml.properties.widgets.NaturalLanguageEditor"
+          language="alf">
+    </editor>
+ </extension>
+ <extension
+       point="org.eclipse.papyrus.infra.viewpoints.policy.custom">
+    <contribution
+          file="viewpoints/plasma.configuration"
+          original="platform:/plugin/org.eclipse.papyrus.infra.viewpoints.policy/builtin/default.configuration">
+    </contribution>
+ </extension>
+ <extension
+	point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
+	<editpolicyProvider
+		class="org.terrameta.plasma.diagram.common.editpolicy.provider.PlasmaDiagramsEditPolicyProvider">
+		<Priority name="Low"/>
+	</editpolicyProvider>
+</extension>
+<extension
+      point="org.eclipse.papyrus.infra.gmfdiag.common.diagramReconciler">
+   <diagramReconciler
+         diagramType="classdef"
+         reconcilerClass="org.terrameta.plasma.diagram.common.migration.PlasmaReconciler"
+         source="0.9.0"
+         target="1.0.0">
+   </diagramReconciler>
+</extension>
+</plugin>

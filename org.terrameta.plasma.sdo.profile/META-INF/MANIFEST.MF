@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Profile
+Bundle-SymbolicName: org.terrameta.plasma.sdo.profile;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.terrameta.plasma.sdo.profile.Activator
+Bundle-Vendor: TerraMeta Software Inc.
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
